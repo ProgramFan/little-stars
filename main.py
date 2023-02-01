@@ -1,12 +1,17 @@
 count = 0
+index = 0
 
 def on_button_pressed_a():
-    global count
+    global count, index
     count = randint(0, 5)
-    basic.show_string("Alarm")
-    basic.show_string("" + str((count)))
-    basic.show_string("times")
-    for index in range(count):
+    basic.show_string("MUSIC")
+    basic.show_string("" + str(count))
+    if count <= 1:
+        basic.show_string("TIME")
+    else:
+        basic.show_string("TIMES")
+    while index <= count - 1:
+        basic.show_string("" + str((count - index)))
         music.play_melody("C C G G A A G - ", 120)
         music.play_melody("F F E E D D C - ", 120)
         music.play_melody("G G F F E E D - ", 120)
@@ -15,8 +20,8 @@ def on_button_pressed_a():
         music.play_melody("F F E E D D C - ", 120)
         basic.show_icon(IconNames.HAPPY)
         basic.pause(1000)
-        basic.show_string(str((count - index - 1)))
         basic.clear_screen()
+        index += 1
     basic.show_icon(IconNames.YES)
     basic.pause(1000)
     basic.clear_screen()
