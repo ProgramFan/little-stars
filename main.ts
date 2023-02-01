@@ -32,6 +32,8 @@ function play_music (notes: number[], fraq: number[], tempo: number) {
         y = fraq[i]
         if (x == 0) {
             music.rest(beats[y])
+        } else if (x < 0) {
+            music.playTone(freqs[14 + Math.abs(x)], beats[y])
         } else {
             music.playTone(freqs[x], beats[y])
         }
@@ -54,8 +56,24 @@ input.onButtonPressed(Button.B, function () {
     3,
     4,
     5,
+    5,
+    6,
+    5,
+    4,
     3,
-    0
+    1,
+    5,
+    6,
+    5,
+    4,
+    3,
+    1,
+    2,
+    -5,
+    1,
+    2,
+    -5,
+    1
     ]
     beats_1 = [
     2,
@@ -72,8 +90,24 @@ input.onButtonPressed(Button.B, function () {
     2,
     2,
     1,
+    3,
+    3,
+    3,
+    3,
     2,
-    2
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    1
     ]
     play_music(tunes_1, beats_1, 120)
 })
@@ -103,13 +137,13 @@ freqs = [
 784,
 880,
 988,
-247,
-220,
-196,
-175,
-165,
+131,
 147,
-131
+165,
+175,
+196,
+220,
+247
 ]
 // music beats: 0 for breve, 1 for double, 2 for whole, 3 for half, 4 for 1/4, 5 for 1/8, 6 for 1/16.
 beats = [

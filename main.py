@@ -33,14 +33,78 @@ def play_music(notes: List[number], fraq: List[number], tempo: number):
         y = fraq[i]
         if x == 0:
             music.rest(beats[y])
+        elif x < 0:
+            music.play_tone(freqs[14 + abs(x)], beats[y])
         else:
             music.play_tone(freqs[x], beats[y])
         i += 1
 
 def on_button_pressed_b():
     global tunes_1, beats_1
-    tunes_1 = [1, 2, 3, 1, 1, 2, 3, 1, 3, 4, 5, 3, 4, 5, 3, 0]
-    beats_1 = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2]
+    tunes_1 = [1,
+        2,
+        3,
+        1,
+        1,
+        2,
+        3,
+        1,
+        3,
+        4,
+        5,
+        3,
+        4,
+        5,
+        5,
+        6,
+        5,
+        4,
+        3,
+        1,
+        5,
+        6,
+        5,
+        4,
+        3,
+        1,
+        2,
+        -5,
+        1,
+        2,
+        -5,
+        1]
+    beats_1 = [2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1]
     play_music(tunes_1, beats_1, 120)
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
@@ -69,13 +133,13 @@ freqs = [0,
     784,
     880,
     988,
-    247,
-    220,
-    196,
-    175,
-    165,
+
+
+    131,
     147,
-    131]
+    165,
+    175,
+    196,    220,   247]
 # music beats: 0 for breve, 1 for double, 2 for whole, 3 for half, 4 for 1/4, 5 for 1/8, 6 for 1/16.
 beats = [music.beat(BeatFraction.BREVE),
     music.beat(BeatFraction.DOUBLE),
